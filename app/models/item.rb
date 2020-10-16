@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :transport_day
 
-  validates :image, presence: true #検討中
+  validates :image, presence: true
   validates :name, presence: true
   validates :description, presence: true
   validates :category, presence: true
@@ -23,4 +23,5 @@ class Item < ApplicationRecord
   validates :transport_day_id, numericality: { other_than: 1 }
 
   belongs_to :user
+  has_one_attached :image
 end
