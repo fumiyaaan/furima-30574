@@ -27,7 +27,7 @@
 | condition_id      | integer    | null: false                    |
 | postage_payer_id  | integer    | null: false                    |
 | prefecture_id     | integer    | null: false                    |
-| transport_day_id | integer    | null: false                    |
+| transport_day_id  | integer    | null: false                    |
 | price             | integer    | null: false                    |
 | user              | references | null: false, foreign_key: true |
 
