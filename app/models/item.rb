@@ -14,6 +14,7 @@ class Item < ApplicationRecord
   validates :postage_payer, presence: true
   validates :prefecture, presence: true
   validates :transport_day, presence: true
+  validates :price, presence: true, numericality: { greater_than: 299, less_than: 10000000 }
 
   #ジャンルの選択が「---」の時は保存できないバリデーション
   validates :category_id, numericality: { other_than: 1 }
