@@ -20,3 +20,5 @@ class User < ApplicationRecord
     validates :first_name_reading
   end
 end
+
+
