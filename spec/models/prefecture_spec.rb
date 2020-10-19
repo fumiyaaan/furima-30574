@@ -1,5 +1,33 @@
 require 'rails_helper'
 
 RSpec.describe Prefecture, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe '商品出品' do
+    context '商品出品がうまくいくとき' do
+      it 'prefecture_idが0以外であれば出品できる' do
+        @item = FactoryBot.build(:item)
+        @item.category_id = 2
+        @item.condition_id = 2
+        @item.postage_payer_id = 2
+        @item.prefecture_id = 1
+        @item.transport_day_id = 2
+        @item.price = 1000
+        expect(@item).to be_valid
+      end
+    end
+
+    context '商品出品がうまくいかないとき' do
+      it 'prefecture_idが0である場合出品できない' do
+        @item = FactoryBot.build(:item)
+        @item.category_id = 2
+        @item.condition_id = 2
+        @item.postage_payer_id = 1
+        @item.prefecture_id = 0
+        @item.transport_day_id = 2
+        @item.price = 1000
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Prefecture Select")
+      end
+    end
+  end
 end
