@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe TransportDay, type: :model do
-
   describe '商品出品' do
     context '商品出品がうまくいくとき' do
       it 'transport_day_idが1以外であれば出品できる' do
@@ -26,7 +25,7 @@ RSpec.describe TransportDay, type: :model do
         @item.transport_day_id = 1
         @item.price = 1000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Transport day Select")
+        expect(@item.errors.full_messages).to include('Transport day Select')
       end
     end
   end

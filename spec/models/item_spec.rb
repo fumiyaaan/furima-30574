@@ -33,28 +33,27 @@ RSpec.describe Item, type: :model do
         @item.postage_payer_id = 2
         @item.prefecture_id = 1
         @item.transport_day_id = 2
-        @item.price = 50000
+        @item.price = 50_000
         expect(@item).to be_valid
       end
     end
 
     context '商品出品がうまくいかないとき' do
       it 'imageが空だと出品できない' do
-
       end
       it 'nameが空だと出品できない' do
-        @item.name = ""
+        @item.name = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Name can't be blank")
       end
 
       it 'descriptionが空だと出品できない' do
-        @item.description = ""
+        @item.description = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Description can't be blank")
       end
       it 'priceが空だと出品できない' do
-        @item.price = ""
+        @item.price = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
@@ -62,19 +61,19 @@ RSpec.describe Item, type: :model do
       it 'priceが300円未満の場合出品できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Out of setting range")
+        expect(@item.errors.full_messages).to include('Price Out of setting range')
       end
 
       it 'priceが9,999,999円超の場合出品できない' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Out of setting range")
+        expect(@item.errors.full_messages).to include('Price Out of setting range')
       end
 
       it 'priceが全角数字での入力である場合出品できない' do
-        @item.price = "１０００"
+        @item.price = '１０００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Half-width number", "Price Out of setting range")
+        expect(@item.errors.full_messages).to include('Price Half-width number', 'Price Out of setting range')
       end
     end
   end
