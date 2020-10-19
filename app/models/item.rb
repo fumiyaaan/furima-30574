@@ -18,15 +18,9 @@ class Item < ApplicationRecord
     validates :price
   end
 
-  # PRICE_REGEX = /\A[0-9]+\z/.freeze
-  # validates_format_of :price, with: PRICE_REGEX, message: 'Half-width number'
-
   validates :price, numericality: { message: 'Half-width number' }
 
   validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 10_000_000, message: 'Out of setting range' }
-  # 商品名でテスト
-  # validates_format_of :name, with: PRICE_REGEX, message: '商品名でテスト'
-  # validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 10000000, message: 'Out of setting range' }
 
   # ジャンルの選択が「---」の時は保存できないバリデーション
   validates :category_id, numericality: { other_than: 1, message: 'Select' }
