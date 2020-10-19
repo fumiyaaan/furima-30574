@@ -9,4 +9,4 @@ function price () {
     Profit.innerHTML = Math.floor(inputValue * 0.9).toLocaleString();
   })
 }
-window.addEventListener("load", price);
+setInterval(price, 1000);
