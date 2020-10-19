@@ -17,7 +17,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'priceが半角数字での入力であれば出品できる' do
-        @item.price = 50000
+        @item.price = 50_000
         expect(@item).to be_valid
       end
     end
@@ -43,31 +43,31 @@ RSpec.describe Item, type: :model do
       it 'category_idが1である場合出品できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category Select")
+        expect(@item.errors.full_messages).to include('Category Select')
       end
 
       it 'condition_idが1である場合出品できない' do
         @item.condition_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition Select")
+        expect(@item.errors.full_messages).to include('Condition Select')
       end
 
       it 'postage_payer_idが1である場合出品できない' do
         @item.postage_payer_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Postage payer Select")
+        expect(@item.errors.full_messages).to include('Postage payer Select')
       end
 
       it 'prefecture_idが0である場合出品できない' do
         @item.prefecture_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture Select")
+        expect(@item.errors.full_messages).to include('Prefecture Select')
       end
 
       it 'transport_day_idが1である場合出品できない' do
         @item.transport_day_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Transport day Select")
+        expect(@item.errors.full_messages).to include('Transport day Select')
       end
 
       it 'priceが空だと出品できない' do
