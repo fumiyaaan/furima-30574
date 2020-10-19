@@ -10,11 +10,11 @@ class Item < ApplicationRecord
     validates :image
     validates :name
     validates :description
-    validates :category
-    validates :condition
-    validates :postage_payer
-    validates :prefecture
-    validates :transport_day
+    validates :category_id
+    validates :condition_id
+    validates :postage_payer_id
+    validates :prefecture_id
+    validates :transport_day_id
     validates :price
   end
 
