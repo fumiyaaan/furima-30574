@@ -19,4 +19,7 @@ class User < ApplicationRecord
     validates :sur_name_reading
     validates :first_name_reading
   end
+
+  has_many :items
+  has_many :purchases
 end
