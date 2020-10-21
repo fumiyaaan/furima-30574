@@ -30,5 +30,6 @@ class Item < ApplicationRecord
   validates :transport_day_id, numericality: { other_than: 1, message: 'Select' }
 
   belongs_to :user
+  has_one :purchase
   has_one_attached :image
 end
