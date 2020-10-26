@@ -1,6 +1,6 @@
 class PurchasesController < ApplicationController
-  before_action :authenticate_user!, only: :index
   before_action :move_to_index, only: :index
+  before_action :authenticate_user!, only: :index
 
   def index
     @purchase_address = PurchaseAddress.new
@@ -27,8 +27,22 @@ class PurchasesController < ApplicationController
 
   def move_to_index
     @item = Item.find(params[:item_id])
-    if user_signed_in? && current_user.id == @item.user_id
+    if @item.purchase
+      redirect_to root_path
+    elsif !user_signed_in?
+      redirect_to new_user_session_path
+    elsif current_user.id == @item.user_id
       redirect_to root_path
     end
   end
+
 end
+
+
+  #def move_to_index
+   # @item = Item.find(params[:item_id])
+    # @item.purchase
+     # unless user_signed_in? && current_user.id != @item.id
+     #   redirect_to root_path
+      #end
+    #end
