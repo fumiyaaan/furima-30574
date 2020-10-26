@@ -4,16 +4,14 @@ class PurchaseAddress
   
  
   POSTAL_NUMBER_REGEX = /\d{3}[-]\d{4}/.freeze              
-  validates :postal_number, presence: true, format: { with: POSTAL_NUMBER_REGEX, message: 'input correctly' }
+  validates :postal_number, presence: true, format: { with: POSTAL_NUMBER_REGEX, message: 'Input correctly' }
   validates :prefecture_id, presence: true, numericality: { other_than: 0, message: 'Select' }
   validates :city, presence: true
   validates :house_number, presence: true
 
-
   PHONE_NUMBER_REGEX = /\A[0-9]{,11}\z/.freeze
   validates :phone_number, presence: true
   validates :phone_number, numericality: { with: PHONE_NUMBER_REGEX, message: 'Input only number' }
-  #validates :price, numericality: { message: 'Half-width number' }
   
   def save
     purchase = Purchase.create(user_id: user_id, item_id: item_id)
