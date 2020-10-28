@@ -10,7 +10,7 @@ class PurchaseAddress
     validates :city
     validates :house_number
     PHONE_NUMBER_REGEX = /\A[0-9]{,11}\z/.freeze
-    validates :phone_number, numericality: { with: PHONE_NUMBER_REGEX, message: 'Input only number' }
+    validates :phone_number, format: { with: PHONE_NUMBER_REGEX, message: 'Input only number and within 11 digits' }
   end
 
   def save

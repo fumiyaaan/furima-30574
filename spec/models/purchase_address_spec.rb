@@ -73,7 +73,13 @@ RSpec.describe PurchaseAddress, type: :model do
       it 'phone_numberが全角数字で入力されていれば購入できない' do
         @purchase_address.phone_number = '０９０１２３４５６７８'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include('Phone number Input only number')
+        expect(@purchase_address.errors.full_messages).to include('Phone number Input only number and within 11 digits')
+      end
+
+      it 'phone_numberが12桁以上の場合購入できない' do
+        @purchase_address.phone_number = "090111122223"
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include('Phone number Input only number and within 11 digits')
       end
 
       it 'tokenが空だと購入できない' do
