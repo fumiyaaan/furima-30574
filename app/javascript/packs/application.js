@@ -4,7 +4,7 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-// require("turbolinks").start()
+// require("turbolinks").start() # フォーム送信処理実装のため無効化
 require("@rails/activestorage").start()
 require("channels")
 require("../price.js")
