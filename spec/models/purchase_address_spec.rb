@@ -37,19 +37,19 @@ RSpec.describe PurchaseAddress, type: :model do
       it 'postal_numberが半角数字7桁(ハイフンなし)の形で入力されていれば購入できない' do
         @purchase_address.postal_number = '1234567'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Postal number Input correctly")
+        expect(@purchase_address.errors.full_messages).to include('Postal number Input correctly')
       end
 
       it 'postal_numberが全角数字で入力されていれば購入できない' do
         @purchase_address.postal_number = '１２３-４５６７'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Postal number Input correctly")
+        expect(@purchase_address.errors.full_messages).to include('Postal number Input correctly')
       end
 
       it 'prefecture_idが0である場合購入できない' do
         @purchase_address.prefecture_id = 0
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Prefecture Select")
+        expect(@purchase_address.errors.full_messages).to include('Prefecture Select')
       end
 
       it 'cityが空だと購入できない' do
@@ -61,7 +61,7 @@ RSpec.describe PurchaseAddress, type: :model do
       it 'house_numberが空だと購入できない' do
         @purchase_address.house_number = ''
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("House number can't be blank")        
+        expect(@purchase_address.errors.full_messages).to include("House number can't be blank")
       end
 
       it 'phone_numberが空だと購入できない' do
@@ -73,7 +73,7 @@ RSpec.describe PurchaseAddress, type: :model do
       it 'phone_numberが全角数字で入力されていれば購入できない' do
         @purchase_address.phone_number = '０９０１２３４５６７８'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Phone number Input only number")
+        expect(@purchase_address.errors.full_messages).to include('Phone number Input only number')
       end
 
       it 'tokenが空だと購入できない' do
