@@ -12,7 +12,7 @@ class PurchasesController < ApplicationController
     if @purchase_address.valid?
       pay_item
       @purchase_address.save
-      redirect_to root_path
+      return redirect_to root_path
     else
       render :index
     end
