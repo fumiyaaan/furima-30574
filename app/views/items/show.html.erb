@@ -93,7 +93,9 @@
         <%= f.submit 'コメントする', class: "comment-btn"%>
         <%# とりあえず保留 image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25" %>
     <% end %>
-    <div id='comments'>
+
+    <div id='comments', class="comments">
+      <h1>過去のコメント</h1>
       <% @comments.reverse_each do |comment| %>
         <p><%= comment.text %></p>
       <% end %>
