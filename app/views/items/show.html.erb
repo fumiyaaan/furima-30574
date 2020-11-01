@@ -82,7 +82,7 @@
 
   <div class="comment-box">
     
-    <%= form_with model: @comment, url: item_comments_path(@item.id), local: true do |f| %>
+    <%= form_with model: @comment, url: item_comments_path(@item.id), id: 'comment-form', local: true do |f| %>
       <%= f.text_area :text, class: "comment-text" %>
       <p class="comment-warn">
         相手のことを考え丁寧なコメントを心がけましょう。
@@ -90,18 +90,31 @@
         不快な言葉遣いなどは利用制限や退会処分となることがあります。
       </p>
         
-        <%= f.submit 'コメントする', class: "comment-btn"%>
-        <%# とりあえず保留 image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25" %>
-    <% end %>
+      <%= f.submit 'コメントする', class: "comment-btn", id: "comment-btn" %>
+      <%# とりあえず保留 image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25" %>
 
-    <div id='comments', class="comments">
-      <h1>過去のコメント</h1>
-      <% @comments.reverse_each do |comment| %>
-        <p><%= comment.text %></p>
+      <div id='comments'>
+        <ul class="comments-index">
+          <% @comments.reverse_each do |comment| %>
+            <li>
+              <% if comment.user_id == @item.user_id %>
+                <%= comment.text %>  By.<%= "出品者" %>
+              <% else %>
+                <%= comment.text %>  By.<%= comment.user.nickname %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <%# コメントがない場合のダミー %>
+      <% if !@item.comments.exists? %>
+        <%= "（例）もう少し安くできませんか？  By.furima太郎" %>
       <% end %>
-    </div>
+      <%# /コメントがない場合のダミー %>
 
-  </div>
+    <% end %>   
+  </div> 
+
   <div class="links">
     <a href="#" class="change-item-btn">
       ＜ 前の商品

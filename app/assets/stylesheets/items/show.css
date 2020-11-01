@@ -137,9 +137,10 @@
   margin-right: 5px;
 }
 
-
 /* /商品の概要 */
 
+
+/* コメント */
 .comment-box {
   width: 40vw;
   background-color: #fff;
@@ -183,6 +184,8 @@
 .comment-flag-icon {
   margin: 10px 5px 0 0;
 }
+
+/* /コメント */
 
 .links {
   display: flex;
