@@ -14,7 +14,7 @@ RSpec.describe Comment, type: :model do
 
     context 'コメントがうまくいかないとき' do
       it 'textがなければコメントできない' do
-        @comment.text = ""
+        @comment.text = ''
         @comment.valid?
         expect(@comment.errors.full_messages).to include("Text can't be blank")
       end

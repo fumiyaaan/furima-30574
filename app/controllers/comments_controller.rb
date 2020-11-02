@@ -22,5 +22,4 @@ class CommentsController < ApplicationController
     @item = Item.find(params[:item_id])
     @comments = @item.comments.includes(:user)
   end
-
 end
