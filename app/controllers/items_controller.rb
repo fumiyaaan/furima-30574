@@ -21,12 +21,12 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @comments = @item.comments.includes(:user)
+    @comment = Comment.new
   end
 
   def edit
-    if @item.purchase
-      redirect_to root_path
-    end
+    redirect_to root_path if @item.purchase
   end
 
   def update
