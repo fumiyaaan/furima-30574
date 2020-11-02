@@ -82,7 +82,7 @@
 
   <div class="comment-box">
     <%= form_with model: @comment, url: item_comments_path(@item.id), id: 'comment-form', class: 'comment-form', local: true do |f| %>
-    
+
     <%= render 'shared/error_messages', model: @comment %>
 
       <%= f.text_area :text, class: "comment-text" %>
@@ -91,14 +91,13 @@
         <br>
         不快な言葉遣いなどは利用制限や退会処分となることがあります。
       </p>
-        
+      
       <%= f.submit 'コメントする', class: "comment-btn", id: "comment-btn" %>
-      <%# とりあえず保留 image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25" %>
       
       <div id='comments', class="comments">
         <h1>コメント</h1>
           <ul id="comment-lists", class="comment-lists">
-            <% @comments.reverse_each do |comment| %>
+            <% @comments.each do |comment| %>
               <li class="comment-list">
                 <% if comment.user_id == @item.user_id %>
                   <%= comment.text %>  By.<%= "出品者" %>
