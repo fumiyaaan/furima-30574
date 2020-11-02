@@ -10,6 +10,7 @@ consumer.subscriptions.create("CommentChannel", {
   },
 
   received(data) {
+    console.log(data);
     const html = `<p>${data.content.text}</p>`;
     const comment_lists = document.getElementById('comment-lists');
     const newComment = document.getElementById('comment_text');
