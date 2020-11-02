@@ -11,11 +11,10 @@ consumer.subscriptions.create("CommentChannel", {
 
   received(data) {
     const html = `<p>${data.content.text}</p>`;
-    const comments = document.getElementById('comments');
+    const comment_lists = document.getElementById('comment-lists');
     const newComment = document.getElementById('comment_text');
-    comments.insertAdjacentHTML('afterbegin', html);
+    comment_lists.insertAdjacentHTML('afterbegin', html);
     newComment.value='';
   }
 });
-
 
