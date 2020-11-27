@@ -12,8 +12,8 @@
 | birthday           | date   | null: false               |
 
 ### Association
--has_many :items
--has_many :purchases
+- has_many :items  
+- has_many :purchases
 
 
 
@@ -32,13 +32,13 @@
 | user              | references | null: false, foreign_key: true |
 
 ### Association
--belongs_to :user
--has_one :purchase
--belongs_to_active_hash :category
--belongs_to_active_hash :condition
--belongs_to_active_hash :postage_payer
--belongs_to_active_hash :prefecture
--belongs_to_active_hash :transport_days
+- belongs_to :user  
+- has_one :purchase  
+- belongs_to_active_hash :category  
+- belongs_to_active_hash :condition  
+- belongs_to_active_hash :postage_payer  
+- belongs_to_active_hash :prefecture  
+- belongs_to_active_hash :transport_days  
 
 
 
@@ -50,9 +50,9 @@
 | item   | references | null: false, foreign_key: true |
 
 ### Association
--belongs_to :user
--belongs_to :item
--has_one :address
+- belongs_to :user  
+- belongs_to :item  
+- has_one :address
 
 
 
@@ -69,8 +69,8 @@
 | purchase      | references | null: false, foreign_key: true |
 
 ### Association
--belongs_to :purchase
--belongs_to_active_hash :prefecture
+- belongs_to :purchase  
+- belongs_to_active_hash :prefecture  
 
 
 
@@ -83,5 +83,5 @@
 | item   | references | null: false, foreign_key: true |
 
 ### Association
--belongs_to :user
--belongs_to :item
+- belongs_to :user  
+- belongs_to :item  
