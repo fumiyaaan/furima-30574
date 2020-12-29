@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "ユーザー新規登録", type: :system do
+RSpec.describe 'ユーザー新規登録', type: :system do
   before do
     @user = FactoryBot.build(:user)
   end
@@ -30,9 +30,9 @@ RSpec.describe "ユーザー新規登録", type: :system do
       select '22', from: 'user[birthday(3i)]'
 
       # 会員登録ボタンを押すとユーザーモデルのカウントが1上がることを確認する
-      expect{
+      expect do
         find('input[name="commit"]').click
-      }.to change { User.count }.by(1)
+      end.to change { User.count }.by(1)
 
       # トップページへ遷移したことを確認する
       expect(current_path).to eq root_path
@@ -58,25 +58,25 @@ RSpec.describe "ユーザー新規登録", type: :system do
       visit new_user_registration_path
 
       # ユーザー情報を入力する
-      fill_in 'nickname', with: ""
-      fill_in 'email', with: ""
-      fill_in 'password', with: ""
-      fill_in 'password-confirmation', with: ""
-      fill_in 'first-name', with: ""
-      fill_in 'last-name', with: ""
-      fill_in 'first-name-kana', with: ""
-      fill_in 'last-name-kana', with: ""
-      select "", from: 'user[birthday(1i)]'
-      select "", from: 'user[birthday(2i)]'
-      select "", from: 'user[birthday(3i)]'
+      fill_in 'nickname', with: ''
+      fill_in 'email', with: ''
+      fill_in 'password', with: ''
+      fill_in 'password-confirmation', with: ''
+      fill_in 'first-name', with: ''
+      fill_in 'last-name', with: ''
+      fill_in 'first-name-kana', with: ''
+      fill_in 'last-name-kana', with: ''
+      select '', from: 'user[birthday(1i)]'
+      select '', from: 'user[birthday(2i)]'
+      select '', from: 'user[birthday(3i)]'
 
       # 会員登録ボタンを押してもユーザーモデルのカウントは上がらないことを確認する
-      expect{
+      expect do
         find('input[name="commit"]').click
-      }.to change { User.count }.by(0)
+      end.to change { User.count }.by(0)
 
       # 新規登録ページへ戻されることを確認する
-      expect(current_path).to eq "/users"
+      expect(current_path).to eq '/users'
     end
   end
 end
@@ -128,8 +128,8 @@ RSpec.describe 'ログイン', type: :system do
       visit new_user_session_path
 
       # 正しいユーザー情報を入力する
-      fill_in 'email', with: ""
-      fill_in 'password', with: ""
+      fill_in 'email', with: ''
+      fill_in 'password', with: ''
 
       # ログインボタンを押す
       find('input[name="commit"]').click
