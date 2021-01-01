@@ -127,7 +127,7 @@ RSpec.describe 'ログイン', type: :system do
       # ログインページへ遷移する
       visit new_user_session_path
 
-      # 正しいユーザー情報を入力する
+      # 間違ったユーザー情報を入力する
       fill_in 'email', with: ''
       fill_in 'password', with: ''
 
