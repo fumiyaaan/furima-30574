@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "商品出品", type: :system do
+RSpec.describe '商品出品', type: :system do
   before do
     @user = FactoryBot.create(:user)
     @item = FactoryBot.build(:item)
@@ -31,9 +31,9 @@ RSpec.describe "商品出品", type: :system do
       fill_in 'item-price', with: @item.price
 
       # 出品するボタンを押すとItemモデルのカウントが1上がることを確認する
-      expect{
+      expect  do
         find('input[name="commit"]').click
-      }.to change { Item.count }.by(1)
+      end.to change { Item.count }.by(1)
 
       # トップページに遷移することを確認する
       expect(current_path).to eq root_path
@@ -56,24 +56,24 @@ RSpec.describe "商品出品", type: :system do
 
       # 商品出品ページへ移動する
       visit new_item_path
-  
+
       # フォームに間違った情報を入力する
-      fill_in 'item-name', with: ""
-      fill_in 'item-info', with: ""
-      select 'メンズ', from: ""
-      select '新品、未使用', from: ""
-      select '着払い(購入者負担)', from: ""
-      select '北海道', from: ""
-      select '1~2日で発送', from: ""
-      fill_in 'item-price', with: ""
+      fill_in 'item-name', with: ''
+      fill_in 'item-info', with: ''
+      select 'メンズ', from: ''
+      select '新品、未使用', from: ''
+      select '着払い(購入者負担)', from: ''
+      select '北海道', from: ''
+      select '1~2日で発送', from: ''
+      fill_in 'item-price', with: ''
 
       # 出品するボタンを押してもItemモデルのカウントは上がらないことを確認する
-      expect{
+      expect  do
         find('input[name="commit"]').click
-      }.to change { Item.count }.by(0)
+      end.to change { Item.count }.by(0)
 
       # 商品出品ページへ遷移されることを確認する
-      expect(current_path).to eq "/items"
+      expect(current_path).to eq '/items'
     end
   end
 end
@@ -99,13 +99,13 @@ RSpec.describe '商品内容編集', type: :system do
       visit edit_item_path(@item)
 
       # 商品内容を編集する
-      fill_in "item-name", with: "#{@item.name}+（編集後）"
-      fill_in "item-info", with: "#{@item.description}+（編集後）"
+      fill_in 'item-name', with: "#{@item.name}+（編集後）"
+      fill_in 'item-info', with: "#{@item.description}+（編集後）"
 
       # 編集してもItemモデルのカウントは変わらないことを確認する
-      expect{
+      expect  do
         find('input[name="commit"]').click
-      }.to change { Item.count }.by(0)
+      end.to change { Item.count }.by(0)
 
       # @itemの詳細ページへ遷移されることを確認する
       expect(current_path).to eq item_path(@item)
@@ -130,7 +130,7 @@ RSpec.describe '商品内容編集', type: :system do
       visit item_path(@item)
 
       # @spotの詳細ページ上に"商品の編集"ボタンがないことを確認する
-      expect(page).to have_no_content("商品の編集")
+      expect(page).to have_no_content('商品の編集')
     end
   end
 
@@ -142,11 +142,11 @@ RSpec.describe '商品内容編集', type: :system do
     visit item_path(@item)
 
     # @spotの詳細ページ上に「商品の編集」ボタンがないことを確認する
-    expect(page).to have_no_content("商品の編集")
+    expect(page).to have_no_content('商品の編集')
   end
 end
 
-RSpec.describe "商品削除", type: :system do
+RSpec.describe '商品削除', type: :system do
   before do
     @user = FactoryBot.create(:user)
     @item = FactoryBot.create(:item)
@@ -167,9 +167,9 @@ RSpec.describe "商品削除", type: :system do
       expect(page).to have_content('削除')
 
       # 「削除」ボタンを押すとItemモデルのカウントが1減ることを確認する
-      expect{
+      expect do
         find_link('削除', href: item_path(@item)).click
-      }.to change { Item.count }.by(-1)
+      end.to change { Item.count }.by(-1)
 
       # トップページに遷移する
       expect(current_path).to eq root_path
@@ -189,7 +189,7 @@ RSpec.describe "商品削除", type: :system do
 
       # @itemの詳細ページへ移動する
       visit item_path(@item)
-      
+
       # @itemの詳細ページ上に「削除」ボタンがないことを確認する
       expect(page).to have_no_content('削除')
     end
