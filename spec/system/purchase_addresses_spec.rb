@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "商品購入", type: :system do
+RSpec.describe '商品購入', type: :system do
   before do
     @user = FactoryBot.create(:user)
     @item = FactoryBot.create(:item)
@@ -30,12 +30,12 @@ RSpec.describe "商品購入", type: :system do
       fill_in 'card-cvc', with: 123
       fill_in 'postal-code', with: 123-4567
       select '北海道', from: 'purchase_address[prefecture_id]'
-      fill_in 'city', with: "横浜市"
-      fill_in 'addresses', with: "1番地2"
-      fill_in 'phone-number', with: "09012345678"
+      fill_in 'city', with: '横浜市'
+      fill_in 'addresses', with: '1番地2'
+      fill_in 'phone-number', with: '09012345678'
 
       # 「購入」ボタンを押すとPurchaseモデルのカウントが1上がることを確認する
-      expect{find('input[name="commit"]').click}.to change { Purchase.count }.by(1)
+      expect { find('input[name="commit"]').click }.to change { Purchase.count }.by(1)
 
       # トップページに遷移されることを確認する
       expect(current_path).to eq root_path
